@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.5)
+
+FILE(GLOB SRC_SOURCES src/*.cpp)
+FILE(GLOB LIB_AGENT_SOURCES lib/agent/*.cpp)
+FILE(GLOB LIB_BDI_SOURCES lib/bdi/*.cpp)
+FILE(GLOB LIB_LIB_SOURCES lib/lib/*.cpp)
+FILE(GLOB LIB_SYNTAX_SOURCES lib/syntax/*.cpp)
+
+set(COMPONENT_SRCS ${SRC_SOURCES} ${LIB_AGENT_SOURCES} ${LIB_BDI_SOURCES} ${LIB_LIB_SOURCES} ${LIB_SYNTAX_SOURCES})
+set(COMPONENT_ADD_INCLUDEDIRS "src lib data")
+
+register_component()
