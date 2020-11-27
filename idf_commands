@@ -1,9 +1,0 @@
-To start env:
-
-idt_start
-
-----
-
-To compile and flash code:
-
-idf.py -p /dev/ttyUSB0 flash monitor
