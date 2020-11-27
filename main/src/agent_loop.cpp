@@ -7,12 +7,16 @@
 
 #include "agent/agent.h"
 #include "config/configuration.h"
+// #include "esp_log.h"
+// #include "esp_system.h"
 
 #include <unistd.h>
 
 extern "C" {
 	void app_main(void);
 }
+
+// static const char *TAG = "log";
 
 void app_main()
 {
@@ -29,6 +33,7 @@ void app_main()
   {
     agent.run();
     usleep(200000);
+    // ESP_LOGI(TAG, "Memory usage: %d", esp_get_free_heap_size());
   }
 
   return;
