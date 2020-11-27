@@ -1,12 +1,11 @@
 cmake_minimum_required(VERSION 3.5)
 
-FILE(GLOB SRC_SOURCES src/*.cpp)
-FILE(GLOB LIB_AGENT_SOURCES lib/agent/*.cpp)
-FILE(GLOB LIB_BDI_SOURCES lib/bdi/*.cpp)
-FILE(GLOB LIB_LIB_SOURCES lib/lib/*.cpp)
-FILE(GLOB LIB_SYNTAX_SOURCES lib/syntax/*.cpp)
+FILE(GLOB EMB_BDI_AGENT_SOURCES embedded-bdi/lib/agent/*.cpp)
+FILE(GLOB EMB_BDI_BDI_SOURCES embedded-bdi/lib/bdi/*.cpp)
+FILE(GLOB EMB_BDI_LIB_SOURCES embedded-bdi/lib/lib/*.cpp)
+FILE(GLOB EMB_BDI_SYNTAX_SOURCES embedded-bdi/lib/syntax/*.cpp)
 
-set(COMPONENT_SRCS ${SRC_SOURCES} ${LIB_AGENT_SOURCES} ${LIB_BDI_SOURCES} ${LIB_LIB_SOURCES} ${LIB_SYNTAX_SOURCES})
-set(COMPONENT_ADD_INCLUDEDIRS "src lib data")
+set(COMPONENT_SRCS src/agent_loop.cpp ${EMB_BDI_AGENT_SOURCES} ${EMB_BDI_BDI_SOURCES} ${EMB_BDI_LIB_SOURCES} ${EMB_BDI_SYNTAX_SOURCES})
+set(COMPONENT_ADD_INCLUDEDIRS "src embedded-bdi/lib data")
 
 register_component()

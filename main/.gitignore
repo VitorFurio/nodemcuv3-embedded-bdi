@@ -1,7 +1,0 @@
-# ESP8266 SDK
-sdkconfig
-sdkconfig.old
-build/
-
-# VS Code
-.vscode

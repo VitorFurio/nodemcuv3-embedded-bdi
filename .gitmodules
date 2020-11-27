@@ -1,0 +1,3 @@
+[submodule "main/embedded-bdi"]
+	path = main/embedded-bdi
+	url = https://github.com/matuzalemmuller/embedded-bdi.git
