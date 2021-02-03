@@ -82,7 +82,24 @@ bool action_suck()
   return true;
 }
 
-bool update_start(bool var)
+bool action_say1()
+{
+  printf("Starting 1...\n");
+  return true;
+}
+
+bool action_say2()
+{
+  printf("Starting 2...\n");
+  return true;
+}
+
+bool action_nothing()
+{
+  return true;
+}
+
+bool update_button_start(bool var)
 {
   if (ESP_OK == adc_read(&adc_data[0]))
   {

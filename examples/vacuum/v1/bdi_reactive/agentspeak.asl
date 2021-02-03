@@ -1,7 +1,3 @@
-!start.
-
-+!start <- configure.
-
 // plans for dirty location
 +pos_1 : dirty <- suck; right.
 +pos_2 : dirty <- suck; down.

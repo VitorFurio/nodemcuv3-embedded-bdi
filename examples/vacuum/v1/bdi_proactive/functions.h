@@ -82,27 +82,6 @@ bool action_suck()
   return true;
 }
 
-bool update_start(bool var)
-{
-  if (ESP_OK == adc_read(&adc_data[0]))
-  {
-    if (
-       (adc_data[0] < 605 && adc_data[0] > 550) ||
-       (adc_data[0] < 630 && adc_data[0] > 605) ||
-       (adc_data[0] < 650 && adc_data[0] > 630) ||
-       (adc_data[0] < 680 && adc_data[0] > 650) ||
-       (adc_data[0] < 705 && adc_data[0] > 680) ||
-       (adc_data[0] < 725 && adc_data[0] > 705) ||
-       (adc_data[0] < 740 && adc_data[0] > 725) ||
-       (adc_data[0] > 740)
-       )
-    {
-      return true;
-    }
-  }
-  return false;
-}
-
 bool update_dirty(bool var)
 {
   if (ESP_OK == adc_read(&adc_data[0]))
