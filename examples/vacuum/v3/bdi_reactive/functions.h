@@ -122,7 +122,7 @@ bool action_empty()
     return true;
 }
 
-bool update_button_start(bool var)
+bool update_start(bool var)
 {
   if (ESP_OK == adc_read(&adc_data[0]))
   {

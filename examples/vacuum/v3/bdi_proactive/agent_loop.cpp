@@ -9,7 +9,6 @@
 #include "config/configuration.h"
 
 #include <unistd.h>
-#include <stdio.h>
 
 extern "C" {
 	void app_main(void);
