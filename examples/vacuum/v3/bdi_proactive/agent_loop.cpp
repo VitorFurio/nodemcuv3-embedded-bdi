@@ -9,6 +9,7 @@
 #include "config/configuration.h"
 
 #include <unistd.h>
+#include <stdio.h>
 
 extern "C" {
 	void app_main(void);
@@ -30,8 +31,6 @@ void app_main()
   while(true)
   {
     agent.run();
-    usleep(500000);
-    printf("Cycle\n-----\n\n");
   }
 
   return;

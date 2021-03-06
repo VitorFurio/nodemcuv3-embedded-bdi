@@ -1,5 +1,5 @@
 /*
- * Blink onboard LED
+ * Blink onboard LED D4
  */
 #include <stdio.h>
 #include "driver/gpio.h"

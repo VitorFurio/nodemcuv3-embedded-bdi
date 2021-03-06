@@ -1,15 +1,11 @@
-!init.
+// plans for dirty location
++pos_1 : dirty <- suck; right.
++pos_2 : dirty <- suck; down.
++pos_3 : dirty <- suck; up.
++pos_4 : dirty <- suck; left.
 
-+!init : button_start <- !!clean.
-+!init <- !!init.
-
-+!clean : full_deposit <- empty; !!clean.
-+!clean : stop  <- -stop; !!init. 
-+!clean : clean <- !move; !!clean.
-+!clean : dirty <- suck;  !!clean.
--!clean         <- !!clean.
-
-+!move : pos_1 <- right.
-+!move : pos_2 <- down.
-+!move : pos_3 <- +stop; up.
-+!move : pos_4 <- left.
+// plans for clean location
++pos_1 : clean <- right.
++pos_2 : clean <- down.
++pos_3 : clean <- up.
++pos_4 : clean <- left.
