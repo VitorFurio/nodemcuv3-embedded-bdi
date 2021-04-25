@@ -31,8 +31,6 @@ void app_main()
   while(true)
   {
     agent.run();
-    usleep(500000);
-    printf("Cycle\n-----\n\n");
   }
 
   return;
