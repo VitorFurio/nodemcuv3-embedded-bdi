@@ -1,11 +1,12 @@
-// plans for dirty location
-+pos_1 : dirty <- suck; right.
-+pos_2 : dirty <- suck; down.
-+pos_3 : dirty <- suck; up.
-+pos_4 : dirty <- suck; left.
+!start.
 
-// plans for clean location
-+pos_1 : clean <- right.
-+pos_2 : clean <- down.
-+pos_3 : clean <- up.
-+pos_4 : clean <- left.
++!start <- !!clean.
+
++!clean : clean <- !move; !!clean.
++!clean : dirty <- suck;  !!clean.
+-!clean         <- !!clean.
+
++!move : pos_1 <- right.
++!move : pos_2 <- down.
++!move : pos_3 <- up.
++!move : pos_4 <- left.
