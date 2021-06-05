@@ -26,6 +26,8 @@ bool action_left();
 
 bool action_suck();
 
+bool update_button_start(bool var);
+
 bool update_dirty(bool var);
 
 bool update_clean(bool var);

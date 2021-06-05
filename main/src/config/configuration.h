@@ -3,7 +3,7 @@
  *
  * !start.
  * 
- * +!start <- configure; !!clean.
+ * +!start <- !!clean.
  * 
  * +!clean : clean <- !move; !!clean.
  * +!clean : dirty <- suck;  !!clean.
@@ -52,9 +52,9 @@ public:
   AgentSettings()
   {
     belief_base = new BeliefBase(6);
-    event_base = new EventBase(6);
+    event_base = new EventBase(4);
     plan_base = new PlanBase(8);
-    intention_base = new IntentionBase(10, 4);
+    intention_base = new IntentionBase(4, 2);
 
     //--------------------------------------------------------------------------
 
@@ -95,15 +95,11 @@ public:
 
     Statement stm_0(6);
     context_0 = new Context(0);
-    body_0 = new Body(2);
+    body_0 = new Body(1);
 
-    Statement stm_0_body_0(7);
-    BodyInstruction inst_0_0(BodyType::ACTION, stm_0_body_0, action_configure);
+    Statement stm_0_body_0(0);
+    BodyInstruction inst_0_0(BodyType::GOAL, stm_0_body_0, EventOperator::GOAL_ACHIEVE);
     body_0->add_instruction(inst_0_0);
-
-    Statement stm_0_body_1(0);
-    BodyInstruction inst_1_0(BodyType::GOAL, stm_0_body_1, EventOperator::GOAL_ACHIEVE);
-    body_0->add_instruction(inst_1_0);
 
     Plan plan_0(EventOperator::GOAL_ADDITION, stm_0, context_0, body_0);
     plan_base->add_plan(plan_0);
@@ -118,7 +114,7 @@ public:
     ContextCondition cond_1_0(stm_1_clean);
     context_1->add_context(cond_1_0);
 
-    Statement stm_1_body_0(8);
+    Statement stm_1_body_0(7);
     BodyInstruction inst_0_1(BodyType::GOAL, stm_1_body_0, EventOperator::GOAL_ADDITION);
     body_1->add_instruction(inst_0_1);
 
@@ -139,7 +135,7 @@ public:
     ContextCondition cond_2_0(stm_2_dirty);
     context_2->add_context(cond_2_0);
 
-    Statement stm_2_body_0(9);
+    Statement stm_2_body_0(8);
     BodyInstruction inst_0_2(BodyType::ACTION, stm_2_body_0, action_suck);
     body_2->add_instruction(inst_0_2);
 
@@ -165,7 +161,7 @@ public:
 
     //--------------------------------------------------------------------------
 
-    Statement stm_4(8);
+    Statement stm_4(7);
     context_4 = new Context(1);
     body_4 = new Body(1);
 
@@ -173,7 +169,7 @@ public:
     ContextCondition cond_4_0(stm_4_pos_1);
     context_4->add_context(cond_4_0);
 
-    Statement stm_4_body_0(10);
+    Statement stm_4_body_0(9);
     BodyInstruction inst_0_4(BodyType::ACTION, stm_4_body_0, action_right);
     body_4->add_instruction(inst_0_4);
 
@@ -182,7 +178,7 @@ public:
 
     //--------------------------------------------------------------------------
 
-    Statement stm_5(8);
+    Statement stm_5(7);
     context_5 = new Context(1);
     body_5 = new Body(1);
 
@@ -190,7 +186,7 @@ public:
     ContextCondition cond_5_0(stm_5_pos_2);
     context_5->add_context(cond_5_0);
 
-    Statement stm_5_body_0(11);
+    Statement stm_5_body_0(10);
     BodyInstruction inst_0_5(BodyType::ACTION, stm_5_body_0, action_down);
     body_5->add_instruction(inst_0_5);
 
@@ -199,7 +195,7 @@ public:
 
     //--------------------------------------------------------------------------
 
-    Statement stm_6(8);
+    Statement stm_6(7);
     context_6 = new Context(1);
     body_6 = new Body(1);
 
@@ -207,7 +203,7 @@ public:
     ContextCondition cond_6_0(stm_6_pos_3);
     context_6->add_context(cond_6_0);
 
-    Statement stm_6_body_0(12);
+    Statement stm_6_body_0(11);
     BodyInstruction inst_0_6(BodyType::ACTION, stm_6_body_0, action_up);
     body_6->add_instruction(inst_0_6);
 
@@ -216,7 +212,7 @@ public:
 
     //--------------------------------------------------------------------------
 
-    Statement stm_7(8);
+    Statement stm_7(7);
     context_7 = new Context(1);
     body_7 = new Body(1);
 
@@ -224,7 +220,7 @@ public:
     ContextCondition cond_7_0(stm_7_pos_4);
     context_7->add_context(cond_7_0);
 
-    Statement stm_7_body_0(13);
+    Statement stm_7_body_0(12);
     BodyInstruction inst_0_7(BodyType::ACTION, stm_7_body_0, action_left);
     body_7->add_instruction(inst_0_7);
 

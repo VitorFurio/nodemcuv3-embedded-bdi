@@ -8,6 +8,7 @@
 
 #define CYCLE_DELAY 500000
 #define SUCK_DELAY 20000
+#define DEPOSIT_DELAY 2000000
 #define D0 GPIO_NUM_16
 #define D1 GPIO_NUM_5
 #define D2 GPIO_NUM_4
@@ -26,9 +27,15 @@ bool action_left();
 
 bool action_suck();
 
+bool action_empty();
+
+bool update_button_start(bool var);
+
 bool update_dirty(bool var);
 
 bool update_clean(bool var);
+
+bool update_full_deposit(bool var);
 
 bool update_pos_1(bool var);
 
