@@ -3,4 +3,4 @@
 	url = https://github.com/matuzalemmuller/ESP8266_RTOS_SDK
 [submodule "embedded-bdi"]
 	path = embedded-bdi
-	url = https://github.com/matuzalemmuller/embedded-bdi
+	url = https://github.com/Embedded-BDI/embedded-bdi
