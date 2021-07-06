@@ -1,0 +1,145 @@
+Python requirements from /home/matuzalem/dev/nodemcuv3-embedded-bdi/ESP8266_RTOS_SDK/requirements.txt are satisfied.
+[  0%] Built target _project_elf_src
+[  0%] Built target esp8266_linker_script
+[  0%] Built target __idf_app_update
+[  1%] Built target __idf_spi_flash
+[  2%] Built target __idf_newlib
+[  4%] Built target __idf_freertos
+[  5%] Built target __idf_heap
+[  5%] Built target __idf_log
+[ 19%] Built target __idf_lwip
+[ 20%] Built target __idf_vfs
+[ 25%] Built target __idf_esp8266
+[ 27%] Built target __idf_nvs_flash
+[ 29%] Built target __idf_bootloader_support
+[ 30%] Built target __idf_esp_ringbuf
+[ 45%] Built target __idf_wpa_supplicant
+[ 58%] Built target mbedcrypto
+[ 60%] Built target mbedx509
+[ 61%] Built target mbedtls
+[ 62%] Built target __idf_esp_event
+[ 62%] Built target __idf_esp_common
+[ 63%] Built target __idf_tcpip_adapter
+[ 63%] Built target __idf_json
+[ 63%] Built target __idf_http_parser
+[ 64%] Built target __idf_esp_gdbstub
+[ 65%] Built target __idf_console
+[ 67%] Built target __idf_jsmn
+[ 68%] Built target __idf_spiffs
+[ 68%] Built target __idf_protobuf-c
+[ 69%] Built target __idf_wear_levelling
+[ 69%] Built target __idf_spi_ram
+[ 70%] Built target __idf_pthread
+[ 71%] Built target __idf_openssl
+[ 76%] Built target __idf_freemodbus
+[ 77%] Built target __idf_esp-tls
+[ 78%] Built target __idf_fatfs
+[ 79%] Built target __idf_esp_http_server
+[ 80%] Built target __idf_tcp_transport
+[ 81%] Built target __idf_esp_http_client
+[ 82%] Built target __idf_mqtt
+[ 95%] Built target __idf_libsodium
+[ 95%] Built target __idf_esp_https_ota
+[ 98%] Built target __idf_main
+[ 98%] Built target __ldgen_output_esp8266.project.ld
+[ 98%] Built target __idf_build_target
+[100%] Built target agent.elf
+[100%] Built target gen_project_binary
+[100%] Built target app
+[  0%] Built target esp8266_linker_script
+[  0%] Built target _project_elf_src
+[  0%] Built target __idf_app_update
+[  1%] Built target __idf_spi_flash
+[  2%] Built target __idf_newlib
+[  4%] Built target __idf_freertos
+[  5%] Built target __idf_heap
+[  5%] Built target __idf_log
+[ 19%] Built target __idf_lwip
+[ 20%] Built target __idf_vfs
+[ 25%] Built target __idf_esp8266
+[ 27%] Built target __idf_nvs_flash
+[ 29%] Built target __idf_bootloader_support
+[ 30%] Built target __idf_esp_ringbuf
+[ 45%] Built target __idf_wpa_supplicant
+[ 58%] Built target mbedcrypto
+[ 60%] Built target mbedx509
+[ 61%] Built target mbedtls
+[ 62%] Built target __idf_esp_event
+[ 62%] Built target __idf_esp_common
+[ 63%] Built target __idf_tcpip_adapter
+[ 63%] Built target __idf_http_parser
+[ 65%] Built target __idf_spiffs
+[ 65%] Built target __idf_jsmn
+[ 67%] Built target __idf_console
+[ 68%] Built target __idf_esp_gdbstub
+[ 68%] Built target __idf_json
+[ 69%] Built target __idf_pthread
+[ 70%] Built target __idf_protobuf-c
+[ 71%] Built target __idf_openssl
+[ 71%] Built target __idf_wear_levelling
+[ 71%] Built target __idf_spi_ram
+[ 76%] Built target __idf_freemodbus
+[ 77%] Built target __idf_esp-tls
+[ 79%] Built target __idf_fatfs
+[ 79%] Built target __idf_esp_http_server
+[ 80%] Built target __idf_tcp_transport
+[ 81%] Built target __idf_esp_http_client
+[ 82%] Built target __idf_mqtt
+[ 95%] Built target __idf_libsodium
+[ 95%] Built target __idf_esp_https_ota
+[ 98%] Built target __idf_main
+[ 98%] Built target __ldgen_output_esp8266.project.ld
+[ 98%] Built target __idf_build_target
+[100%] Built target agent.elf
+Total sizes:
+ DRAM .data size:     988 bytes
+ DRAM .bss  size:    4168 bytes
+Used static DRAM:    5156 bytes (  93148 available, 5.2% used)
+Used static IRAM:   18012 bytes (  31140 available, 36.6% used)
+      Flash code:   92322 bytes
+    Flash rodata:   34272 bytes
+Total image size:~ 145594 bytes (.bin may be padded larger)
+Per-archive contributions to ELF file:
+            Archive File DRAM .data & .bss   IRAM Flash code & rodata   Total
+             libstdc++.a         24     88      0       6531    16714   23357
+                libphy.a         10    263   2070      18647     1899   22889
+                libgcc.a          0     37      0      11616     2396   14049
+                 libpp.a         32   1220  10233         81     2104   13670
+           libfreertos.a        540   1262   3204       7043     1295   13344
+             libc_nano.a          4     16      0      10223      859   11102
+          libnvs_flash.a          0     32      0       8174     2707   10913
+            libesp8266.a         14     28     80       7423     3054   10599
+               libmain.a          0    210      0       9827      193   10230
+                libvfs.a        264     48      0       4666      548    5526
+          libspi_flash.a         24      9   1568       2316      151    4068
+            libpthread.a          0     12      0       1602      494    2108
+         libesp_common.a          0      0      0         44     1602    1646
+             libnewlib.a          0    248      0       1108       55    1411
+               libheap.a          0     52    500        336        0     888
+        libesp_ringbuf.a          0      0      0        590        0     590
+           libnet80211.a          0    573     12          0        0     585
+                liblog.a         62     20    122        315        0     519
+               libcore.a          0      0      2        391       39     432
+                librtc.a          0      0      0        269        0     269
+         libapp_update.a          0      0      0          0      256     256
+                libhal.a          0      0     37          0        0      37
+                   (exe)          0      0      0          0        0       0
+          libesp_event.a          0      0      0          0        0       0
+             libespnow.a          0      0      0          0        0       0
+               liblwip.a          0      0      0          0        0       0
+         libmbedcrypto.a          0      0      0          0        0       0
+      libtcpip_adapter.a          0      0      0          0        0       0
+     libwpa_supplicant.a          0      0      0          0        0       0
+[100%] Built target size-components
+Checking Python dependencies...
+Adding size-components's dependency "app" to list of actions
+Executing action: app
+Running make in directory /home/matuzalem/dev/nodemcuv3-embedded-bdi/build
+Executing "make -j 14 app"...
+Executing action: size-components
+Running make in directory /home/matuzalem/dev/nodemcuv3-embedded-bdi/build
+Executing "make -j 14 size-components"...
+
+App build complete. To flash, run this command:
+ESP8266_RTOS_SDK/components/esptool_py/esptool/esptool.py -p (PORT) -b 460800 --after hard_reset write_flash 0x10000 build/agent.bin
+or run 'idf.py -p (PORT) app-flash'

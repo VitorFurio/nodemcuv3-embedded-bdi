@@ -1,3 +1,4 @@
+// plan to start vacuum cycle
 +button_start <- +pos_1.
 
 // plans for dirty location
