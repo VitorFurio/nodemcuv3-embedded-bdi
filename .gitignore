@@ -4,3 +4,6 @@ build/
 
 # VS Code
 .vscode
+
+# File with some notes for local development
+notes.txt

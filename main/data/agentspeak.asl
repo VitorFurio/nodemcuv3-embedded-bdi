@@ -1,12 +1,15 @@
-!start.
+!init.
 
-+!start <- !!clean.
++!init : button_start <- !!clean.
++!init <- !!init.
 
++!clean : full_deposit <- empty; !!clean.
++!clean : stop  <- -stop; !!init. 
 +!clean : clean <- !move; !!clean.
 +!clean : dirty <- suck;  !!clean.
 -!clean         <- !!clean.
 
 +!move : pos_1 <- right.
 +!move : pos_2 <- down.
-+!move : pos_3 <- up.
++!move : pos_3 <- +stop; up.
 +!move : pos_4 <- left.
