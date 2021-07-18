@@ -1,9 +1,9 @@
 /*
  * AgentSpeak code:
  *
- * !start.
+ * !init.
  * 
- * +!start <- !!clean.
+ * +!init <- !!clean.
  * 
  * +!clean : clean <- !move; !!clean.
  * +!clean : dirty <- suck;  !!clean.
