@@ -1,0 +1,245 @@
+Python requirements from /home/matuzalem/dev/nodemcuv3-embedded-bdi/ESP8266_RTOS_SDK/requirements.txt are satisfied.
+[  0%] Built target esp8266_linker_script
+[  1%] Built target _project_elf_src
+[  1%] Built target partition_table
+[  1%] Built target __idf_app_update
+[  1%] Performing build step for 'bootloader'
+[  2%] Built target __idf_spi_flash
+[  6%] Built target __idf_log
+[  6%] Built target __idf_build_target
+[  9%] Built target _project_elf_src
+[  3%] Built target __idf_newlib
+[ 21%] Built target __idf_esp8266
+[  5%] Built target __idf_freertos
+[ 66%] Built target __idf_bootloader_support
+[  6%] Built target __idf_heap
+[ 81%] Built target __idf_spi_flash
+[  6%] Built target __idf_log
+[ 87%] Built target __idf_main
+[ 96%] Built target bootloader.elf
+[100%] Built target gen_project_binary
+[100%] Built target app
+[ 20%] Built target __idf_lwip
+[ 20%] No install step for 'bootloader'
+[ 21%] Built target __idf_vfs
+[ 21%] Completed 'bootloader'
+[ 26%] Built target __idf_esp8266
+[ 27%] Built target bootloader
+[ 29%] Built target __idf_nvs_flash
+[ 31%] Built target __idf_bootloader_support
+[ 32%] Built target __idf_esp_ringbuf
+[ 46%] Built target __idf_wpa_supplicant
+[ 59%] Built target mbedcrypto
+[ 61%] Built target mbedx509
+[ 62%] Built target mbedtls
+[ 63%] Built target __idf_esp_event
+[ 63%] Built target __idf_esp_common
+[ 64%] Built target __idf_tcpip_adapter
+[ 64%] Built target __idf_json
+[ 65%] Built target __idf_esp_gdbstub
+[ 66%] Built target __idf_console
+[ 65%] Built target __idf_http_parser
+[ 68%] Built target __idf_wear_levelling
+[ 68%] Built target __idf_jsmn
+[ 69%] Built target __idf_spiffs
+[ 69%] Built target __idf_protobuf-c
+[ 70%] Built target __idf_openssl
+[ 71%] Built target __idf_pthread
+[ 71%] Built target __idf_spi_ram
+[ 76%] Built target __idf_freemodbus
+[ 77%] Built target __idf_esp-tls
+[ 78%] Built target __idf_esp_http_server
+[ 79%] Built target __idf_fatfs
+[ 80%] Built target __idf_tcp_transport
+[ 81%] Built target __idf_mqtt
+[ 82%] Built target __idf_esp_http_client
+[ 95%] Built target __idf_libsodium
+[ 95%] Built target __idf_esp_https_ota
+[ 98%] Built target __idf_main
+[ 98%] Built target __ldgen_output_esp8266.project.ld
+[ 98%] Built target __idf_build_target
+[100%] Built target agent.elf
+[100%] Built target gen_project_binary
+[100%] Built target app
+esptool.py -p /dev/ttyUSB0 -b 460800 --after hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x8000 partition_table/partition-table.bin 0x0 bootloader/bootloader.bin 0x10000 agent.bin
+esptool.py v2.4.0
+Connecting....
+Detecting chip type... ESP8266
+Chip is ESP8266EX
+Features: WiFi
+MAC: cc:50:e3:1c:33:56
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Compressed 3072 bytes to 83...
+Writing at 0x00008000... (100 %)Wrote 3072 bytes (83 compressed) at 0x00008000 in 0.0 seconds (effective 4563.5 kbit/s)...
+Hash of data verified.
+Compressed 9056 bytes to 6434...
+Writing at 0x00000000... (100 %)Wrote 9056 bytes (6434 compressed) at 0x00000000 in 0.1 seconds (effective 490.4 kbit/s)...
+Hash of data verified.
+Compressed 145296 bytes to 87940...
+Writing at 0x00010000... (16 %)Writing at 0x00014000... (33 %)Writing at 0x00018000... (50 %)Writing at 0x0001c000... (66 %)Writing at 0x00020000... (83 %)Writing at 0x00024000... (100 %)Wrote 145296 bytes (87940 compressed) at 0x00010000 in 2.0 seconds (effective 569.0 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+
+ ets Jan  8 2013,rst cause:2, boot mode:(3,7)
+
+load 0x40100000, len 5836, room 16 
+tail 12
+chksum 0xe6
+ho 0 tail 12 room 4
+load 0x3ffe8008, len 24, room 12 
+tail 12
+chksum 0x6f
+ho 0 tail 12 room 4
+load 0x3ffe8020, len 3160, room 12 
+tail 12
+chksum 0x69
+csum 0x69
+[0;32mI (64) boot: ESP-IDF v3.4-dev-385-g877695ee 2nd stage bootloader[0m
+[0;32mI (64) boot: compile time 22:17:46[0m
+[0;32mI (73) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (73) boot: SPI Speed      : 40MHz[0m
+[0;32mI (79) boot: SPI Mode       : QIO[0m
+[0;32mI (85) boot: SPI Flash Size : 2MB[0m
+[0;32mI (91) boot: Partition Table:[0m
+[0;32mI (96) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (108) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (119) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (130) boot:  2 factory          factory app      00 00 00010000 000f0000[0m
+[0;32mI (142) boot: End of partition table[0m
+[0;32mI (148) esp_image: segment 0: paddr=0x00010010 vaddr=0x40210010 size=0x168d8 ( 92376) map[0m
+[0;32mI (162) esp_image: segment 1: paddr=0x000268f0 vaddr=0x402268e8 size=0x0862c ( 34348) map[0m
+[0;32mI (175) esp_image: segment 2: paddr=0x0002ef24 vaddr=0x3ffe8000 size=0x003dc (   988) load[0m
+[0;32mI (189) esp_image: segment 3: paddr=0x0002f308 vaddr=0x40100000 size=0x00080 (   128) load[0m
+[0;32mI (203) esp_image: segment 4: paddr=0x0002f390 vaddr=0x40100080 size=0x043d0 ( 17360) load[0m
+[0;32mI (216) boot: Loaded app from partition at offset 0x10000[0m
+Start - Available memory: 114892
+Post first print - Available memory: 114596
+After agent object is created - Available memory: 114164
+After setup - Available memory: 114064
+Available memory: 114064
+Available memory: 114064
+Available memory: 114064
+Available memory: 114048
+Moving right...	(P1->P2)
+Available memory: 114040
+Available memory: 114064
+Available memory: 114064
+Available memory: 114048
+Moving down...	(P2->P4)
+Available memory: 114040
+Available memory: 114064
+Available memory: 114064
+Available memory: 114064
+It's dirty!	Sucking...
+Available memory: 114048
+Available memory: 114064
+It's dirty!	Sucking...
+Available memory: 114048
+Available memory: 114064
+It's dirty!	Sucking...
+Available memory: 114048
+Available memory: 114064
+Available memory: 114064
+Available memory: 114048
+Moving left...	(P4->P3)
+Available memory: 114040
+Available memory: 114064
+Available memory: 114064
+Available memory: 114048
+Moving up...	(P3->P1)
+Available memory: 114040
+Available memory: 114064
+Available memory: 114064
+Available memory: 114048
+Moving right...	(P1->P2)
+Available memory: 114040
+Available memory: 114064
+Available memory: 114064
+Available memory: 114064
+It's dirty!	Sucking...
+Available memory: 114048
+Available memory: 114064
+Available memory: 114064
+Available memory: 114048
+Moving down...	(P2->P4)
+Available memory: 114040
+Available memory: 114064
+Available memory: 114064
+Available memory: 114048
+Moving left...	(P4->P3)
+Available memory: 114040
+Available memory: 114064
+Available memory: 114064
+Available memory: 114048
+Moving up...	(P3->P1)
+Available memory: 114040
+Available memory: 114064
+Available memory: 114064
+Available memory: 114064
+It's dirty!	Sucking...
+Available memory: 114048
+Available memory: 114064
+It's dirty!	Sucking...
+Available memory: 114048
+Available memory: 114064
+Available memory: 114064
+Available memory: 114048
+Moving right...	(P1->P2)
+Available memory: 114040
+Available memory: 114064
+Available memory: 114064
+Available memory: 114064
+It's dirty!	Sucking...
+Available memory: 114048
+Available memory: 114064
+It's dirty!	Sucking...
+Available memory: 114048
+Available memory: 114064
+Available memory: 114064
+Available memory: 114048
+Moving down...	(P2->P4)
+Available memory: 114040
+Available memory: 114064
+Available memory: 114064
+Available memory: 114064
+It's dirty!	Sucking...
+Available memory: 114048
+Available memory: 114064
+It's dirty!	Sucking...
+Available memory: 114048
+Available memory: 114064
+Available memory: 114064
+Available memory: 114048
+Moving left...	(P4->P3)
+Available memory: 114040
+Available memory: 114064
+Available memory: 114064
+Available memory: 114064
+It's dirty!	Sucking...
+Available memory: 114048
+Available memory: 114064
+It's dirty!	Sucking...
+Available memory: 114048
+Available memory: 114064
+Available memory: 114064
+Available memory: 114048
+Moving up...	(P3->P1)
+Checking Python dependencies...
+Adding flash's dependency "all" to list of actions
+Executing action: all (aliases: build)
+Running make in directory /home/matuzalem/dev/nodemcuv3-embedded-bdi/build
+Executing "make -j 14 all"...
+Executing action: flash
+Running esptool.py in directory /home/matuzalem/dev/nodemcuv3-embedded-bdi/build
+Executing "/home/matuzalem/.espressif/python_env/rtos3.4_py3.8_env/bin/python /home/matuzalem/dev/nodemcuv3-embedded-bdi/ESP8266_RTOS_SDK/components/esptool_py/esptool/esptool.py -p /dev/ttyUSB0 -b 460800 --after hard_reset write_flash @flash_project_args"...
+Executing action: monitor
+Running idf_monitor in directory /home/matuzalem/dev/nodemcuv3-embedded-bdi
+Executing "/home/matuzalem/.espressif/python_env/rtos3.4_py3.8_env/bin/python /home/matuzalem/dev/nodemcuv3-embedded-bdi/ESP8266_RTOS_SDK/tools/idf_monitor.py -p /dev/ttyUSB0 -b 74880 /home/matuzalem/dev/nodemcuv3-embedded-bdi/build/agent.elf -m '/home/matuzalem/.espressif/python_env/rtos3.4_py3.8_env/bin/python' '/home/matuzalem/dev/nodemcuv3-embedded-bdi/ESP8266_RTOS_SDK/tools/idf.py'"...
+Done

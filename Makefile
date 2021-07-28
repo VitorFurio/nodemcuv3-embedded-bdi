@@ -66,6 +66,58 @@ v3-proactive:
 	./copy_examples.sh v3-proactive
 	make agent-bdi
 
+program-sizes:
+	./copy_examples.sh v1-traditional
+	idf.py build
+	idf.py size-components 2>&1 > examples/vacuum/usage_data/program_size/v1/traditional/size-components
+	idf.py size-files 2>&1 > examples/vacuum/usage_data/program_size/v1/traditional/size-files
+
+	./copy_examples.sh v2-traditional
+	idf.py build
+	idf.py size-components 2>&1 > examples/vacuum/usage_data/program_size/v2/traditional/size-components
+	idf.py size-files 2>&1 > examples/vacuum/usage_data/program_size/v2/traditional/size-files
+
+	./copy_examples.sh v3-traditional
+	idf.py build
+	idf.py size-components 2>&1 > examples/vacuum/usage_data/program_size/v3/traditional/size-components
+	idf.py size-files 2>&1 > examples/vacuum/usage_data/program_size/v3/traditional/size-files
+
+	./copy_examples.sh v1-reactive
+	make translate
+	idf.py build
+	idf.py size-components 2>&1 > examples/vacuum/usage_data/program_size/v1/reactive/size-components
+	idf.py size-files 2>&1 > examples/vacuum/usage_data/program_size/v1/reactive/size-files
+
+	./copy_examples.sh v2-reactive
+	make translate
+	idf.py build
+	idf.py size-components 2>&1 > examples/vacuum/usage_data/program_size/v2/reactive/size-components
+	idf.py size-files 2>&1 > examples/vacuum/usage_data/program_size/v2/reactive/size-files
+
+	./copy_examples.sh v3-reactive
+	make translate
+	idf.py build
+	idf.py size-components 2>&1 > examples/vacuum/usage_data/program_size/v3/reactive/size-components
+	idf.py size-files 2>&1 > examples/vacuum/usage_data/program_size/v3/reactive/size-files
+
+	./copy_examples.sh v1-proactive
+	make translate
+	idf.py build
+	idf.py size-components 2>&1 > examples/vacuum/usage_data/program_size/v1/proactive/size-components
+	idf.py size-files 2>&1 > examples/vacuum/usage_data/program_size/v1/proactive/size-files
+
+	./copy_examples.sh v2-proactive
+	make translate
+	idf.py build
+	idf.py size-components 2>&1 > examples/vacuum/usage_data/program_size/v2/proactive/size-components
+	idf.py size-files 2>&1 > examples/vacuum/usage_data/program_size/v2/proactive/size-files
+
+	./copy_examples.sh v3-proactive
+	make translate
+	idf.py build
+	idf.py size-components 2>&1 > examples/vacuum/usage_data/program_size/v3/proactive/size-components
+	idf.py size-files 2>&1 > examples/vacuum/usage_data/program_size/v3/proactive/size-files
+
 -include agent.config
 
 ######################## DEFAULT IDF MAKEFILE #################################
