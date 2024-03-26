@@ -65,6 +65,10 @@ v2-proactive:
 v3-proactive:
 	./copy_examples.sh v3-proactive
 	make agent-bdi
+	
+v1-speaking:
+	./copy_examples.sh v1-speaking
+	make agent-bdi
 
 program-sizes:
 	./copy_examples.sh v1-traditional
@@ -125,3 +129,4 @@ program-sizes:
 PROJECT_NAME := agent-loop
 
 include $(IDF_PATH)/make/project.mk
+

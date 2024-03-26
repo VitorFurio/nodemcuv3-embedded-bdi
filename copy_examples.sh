@@ -47,3 +47,17 @@ if [[ "$1" == "v1-proactive" ]] || [[ "$1" == "v2-proactive" ]] || [[ "$1" == "v
   cp examples/vacuum/$version/bdi_proactive/CMakeLists.txt main/
   cp examples/vacuum/$version/bdi_proactive/agent.config .
 fi
+
+if [[ "$1" == "v1-speaking" ]] || [[ "$1" == "v2-speaking" ]];
+then
+  version=v${1:1:1}
+  rm -rf main/data/*
+  rm -rf main/src/config/*
+  rm -rf main/src/agent*
+  rm -rf main/CMakeLists.txt
+  cp examples/speaking/$version/agentspeak.asl main/data/
+  cp examples/speaking/$version/functions.* main/data/
+  cp examples/speaking/$version/agent_loop.cpp main/src/
+  cp examples/speaking/$version/CMakeLists.txt main/
+  cp examples/speaking/$version/agent.config .
+fi
