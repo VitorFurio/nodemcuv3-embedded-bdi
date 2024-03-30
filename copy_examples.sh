@@ -48,16 +48,32 @@ if [[ "$1" == "v1-proactive" ]] || [[ "$1" == "v2-proactive" ]] || [[ "$1" == "v
   cp examples/vacuum/$version/bdi_proactive/agent.config .
 fi
 
-if [[ "$1" == "v1-speaking" ]] || [[ "$1" == "v2-speaking" ]];
+
+	## 	PARA O AGENTE COMUNICADOR: 	##
+
+if [[ "$1" == "speaking-traditional" ]]; 
 then
-  version=v${1:1:1}
+  rm -rf main/data/*
+  rm -rf main/src/config/*
+  rm -rf main/src/agent*
+  rm -f main/CMakeLists.txt
+  rm -f agent.config
+  cp examples/speaking/traditional/functions.* main/data/
+  cp examples/speaking/wifi_functions/wifi_station.* main/data/
+  cp examples/speaking/traditional/agent_loop.c main/src/
+  cp examples/speaking/traditional/CMakeLists.txt main/
+fi
+
+if [[ "$1" == "speaking-bdi" ]];
+then
   rm -rf main/data/*
   rm -rf main/src/config/*
   rm -rf main/src/agent*
   rm -rf main/CMakeLists.txt
-  cp examples/speaking/$version/agentspeak.asl main/data/
-  cp examples/speaking/$version/functions.* main/data/
-  cp examples/speaking/$version/agent_loop.cpp main/src/
-  cp examples/speaking/$version/CMakeLists.txt main/
-  cp examples/speaking/$version/agent.config .
+  cp examples/speaking/bdi/agentspeak.asl main/data/
+  cp examples/speaking/bdi/functions.* main/data/
+  cp examples/speaking/wifi_functions/wifi_station.* main/data/
+  cp examples/speaking/bdi/agent_loop.cpp main/src/
+  cp examples/speaking/bdi/CMakeLists.txt main/
+  cp examples/speaking/bdi/agent.config .
 fi

@@ -65,10 +65,18 @@ v2-proactive:
 v3-proactive:
 	./copy_examples.sh v3-proactive
 	make agent-bdi
+
+
+	## PARA AGENTE COMUNICADOR ##	
+speaking-traditional:
+	./copy_examples.sh speaking-traditional
+	make agent-trad
 	
-v1-speaking:
-	./copy_examples.sh v1-speaking
+speaking-bdi:
+	./copy_examples.sh speaking-bdi
 	make agent-bdi
+
+
 
 program-sizes:
 	./copy_examples.sh v1-traditional
