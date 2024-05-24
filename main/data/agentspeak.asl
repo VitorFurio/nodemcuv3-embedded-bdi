@@ -1,12 +1,10 @@
 !init.
 
-+!init <- !!clean; !!connect.
++!init <- !!clean.
 
 +!clean : clean <- !move; !!clean.
 +!clean : dirty <- suck;  !!clean.
 -!clean         <- !!clean.
-
-+!connect : true <- connect_to_wifi.
 
 +!move : pos_1 <- right.
 +!move : pos_2 <- down.

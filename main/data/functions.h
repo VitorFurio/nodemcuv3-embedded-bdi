@@ -6,13 +6,6 @@
 #include "driver/gpio.h"
 #include "driver/adc.h"
 
-
-#include "esp_system.h"
-#include "esp_log.h"
-#include "nvs_flash.h"
-static const char *TAG = "wifi station";
-
-
 #define CYCLE_DELAY 500000
 #define SUCK_DELAY 20000
 #define D0 GPIO_NUM_16
@@ -22,8 +15,6 @@ static const char *TAG = "wifi station";
 #define D4 GPIO_NUM_2
 
 void setup();
-
-bool action_connect_to_wifi();
 
 bool action_right();
 

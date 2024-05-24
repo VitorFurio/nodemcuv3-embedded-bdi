@@ -1,10 +1,5 @@
 #include "functions.h"
 
-extern "C" {
-    #include "wifi_station.h"
-}
-
-
 uint8_t pos;
 
 adc_config_t adc_config;  
@@ -36,15 +31,6 @@ void setup()
 }
 
 /*---------------------------------------------------------------------------*/
-
-bool action_connect_to_wifi()
-{
-  printf("Connecting to Wi-Fi...\n");
-  ESP_ERROR_CHECK(nvs_flash_init());
-  ESP_LOGI(TAG, "ESP_WIFI_MODE_STA");
-  wifi_init_sta();
-  return true;
-}
 
 bool action_right()
 {

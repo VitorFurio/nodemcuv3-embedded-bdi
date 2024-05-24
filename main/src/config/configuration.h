@@ -3,13 +3,11 @@
  *
  * !init.
  * 
- * +!init <- !!clean; !!connect.
+ * +!init <- !!clean.
  * 
  * +!clean : clean <- !move; !!clean.
  * +!clean : dirty <- suck;  !!clean.
  * -!clean         <- !!clean.
- * 
- * +!connect : true <- connect_to_wifi.
  * 
  * +!move : pos_1 <- right.
  * +!move : pos_2 <- down.
@@ -24,6 +22,7 @@
 #include "bdi/event_base.h"
 #include "bdi/plan_base.h"
 #include "bdi/intention_base.h"
+#include "communication/msg_list.h"
 #include "../../main/data/functions.h"
 
 class AgentSettings
@@ -45,20 +44,38 @@ private:
   Context context_6;
   Body body_7;
   Context context_7;
-  Body body_8;
-  Context context_8;
   BeliefBase belief_base;
   EventBase event_base;
   PlanBase plan_base;
   IntentionBase intention_base;
+  MsgList list; // List of propositions used for communication.
 
 public:
   AgentSettings()
   {
     belief_base = BeliefBase(6);
-    event_base = EventBase(30);
-    plan_base = PlanBase(9);
-    intention_base = IntentionBase(10, 20);
+    event_base = EventBase(3);
+    plan_base = PlanBase(8);
+    intention_base = IntentionBase(1, 2);
+
+
+    // Mapping propositions to enable communication between agents.
+    list.addItem("dirty", 1, false);
+    list.addItem("init", 6, false);
+    list.addItem("move", 7, false);
+    list.addItem("right", 9, false);
+    list.addItem("clean", 0, false);
+    list.addItem("down", 10, false);
+    list.addItem("left", 12, false);
+    list.addItem("pos_3", 4, false);
+    list.addItem("pos_4", 5, false);
+    list.addItem("pos_1", 2, false);
+    list.addItem("pos_2", 3, false);
+    list.addItem("up", 11, false);
+    list.addItem("suck", 8, false);
+
+
+    list.print();
 
     //--------------------------------------------------------------------------
 
@@ -99,15 +116,11 @@ public:
 
     Proposition prop_0(6);
     context_0 = Context(0);
-    body_0 = Body(2);
+    body_0 = Body(1);
 
     Proposition prop_0_body_0(0);
     BodyInstruction inst_0_0(BodyType::GOAL, prop_0_body_0, EventOperator::GOAL_ACHIEVE);
     body_0.add_instruction(inst_0_0);
-
-    Proposition prop_0_body_1(7);
-    BodyInstruction inst_1_0(BodyType::GOAL, prop_0_body_1, EventOperator::GOAL_ACHIEVE);
-    body_0.add_instruction(inst_1_0);
 
     Plan plan_0(EventOperator::GOAL_ADDITION, prop_0, &context_0, &body_0);
     plan_base.add_plan(plan_0);
@@ -122,7 +135,7 @@ public:
     ContextCondition cond_1_0(prop_1_clean);
     context_1.add_context(cond_1_0);
 
-    Proposition prop_1_body_0(8);
+    Proposition prop_1_body_0(7);
     BodyInstruction inst_0_1(BodyType::GOAL, prop_1_body_0, EventOperator::GOAL_ADDITION);
     body_1.add_instruction(inst_0_1);
 
@@ -143,7 +156,7 @@ public:
     ContextCondition cond_2_0(prop_2_dirty);
     context_2.add_context(cond_2_0);
 
-    Proposition prop_2_body_0(9);
+    Proposition prop_2_body_0(8);
     BodyInstruction inst_0_2(BodyType::ACTION, prop_2_body_0, action_suck);
     body_2.add_instruction(inst_0_2);
 
@@ -170,11 +183,15 @@ public:
     //--------------------------------------------------------------------------
 
     Proposition prop_4(7);
-    context_4 = Context(0);
+    context_4 = Context(1);
     body_4 = Body(1);
 
-    Proposition prop_4_body_0(10);
-    BodyInstruction inst_0_4(BodyType::ACTION, prop_4_body_0, action_connect_to_wifi);
+    Proposition prop_4_pos_1(2);
+    ContextCondition cond_4_0(prop_4_pos_1);
+    context_4.add_context(cond_4_0);
+
+    Proposition prop_4_body_0(9);
+    BodyInstruction inst_0_4(BodyType::ACTION, prop_4_body_0, action_right);
     body_4.add_instruction(inst_0_4);
 
     Plan plan_4(EventOperator::GOAL_ADDITION, prop_4, &context_4, &body_4);
@@ -182,16 +199,16 @@ public:
 
     //--------------------------------------------------------------------------
 
-    Proposition prop_5(8);
+    Proposition prop_5(7);
     context_5 = Context(1);
     body_5 = Body(1);
 
-    Proposition prop_5_pos_1(2);
-    ContextCondition cond_5_0(prop_5_pos_1);
+    Proposition prop_5_pos_2(3);
+    ContextCondition cond_5_0(prop_5_pos_2);
     context_5.add_context(cond_5_0);
 
-    Proposition prop_5_body_0(11);
-    BodyInstruction inst_0_5(BodyType::ACTION, prop_5_body_0, action_right);
+    Proposition prop_5_body_0(10);
+    BodyInstruction inst_0_5(BodyType::ACTION, prop_5_body_0, action_down);
     body_5.add_instruction(inst_0_5);
 
     Plan plan_5(EventOperator::GOAL_ADDITION, prop_5, &context_5, &body_5);
@@ -199,16 +216,16 @@ public:
 
     //--------------------------------------------------------------------------
 
-    Proposition prop_6(8);
+    Proposition prop_6(7);
     context_6 = Context(1);
     body_6 = Body(1);
 
-    Proposition prop_6_pos_2(3);
-    ContextCondition cond_6_0(prop_6_pos_2);
+    Proposition prop_6_pos_3(4);
+    ContextCondition cond_6_0(prop_6_pos_3);
     context_6.add_context(cond_6_0);
 
-    Proposition prop_6_body_0(12);
-    BodyInstruction inst_0_6(BodyType::ACTION, prop_6_body_0, action_down);
+    Proposition prop_6_body_0(11);
+    BodyInstruction inst_0_6(BodyType::ACTION, prop_6_body_0, action_up);
     body_6.add_instruction(inst_0_6);
 
     Plan plan_6(EventOperator::GOAL_ADDITION, prop_6, &context_6, &body_6);
@@ -216,37 +233,20 @@ public:
 
     //--------------------------------------------------------------------------
 
-    Proposition prop_7(8);
+    Proposition prop_7(7);
     context_7 = Context(1);
     body_7 = Body(1);
 
-    Proposition prop_7_pos_3(4);
-    ContextCondition cond_7_0(prop_7_pos_3);
+    Proposition prop_7_pos_4(5);
+    ContextCondition cond_7_0(prop_7_pos_4);
     context_7.add_context(cond_7_0);
 
-    Proposition prop_7_body_0(13);
-    BodyInstruction inst_0_7(BodyType::ACTION, prop_7_body_0, action_up);
+    Proposition prop_7_body_0(12);
+    BodyInstruction inst_0_7(BodyType::ACTION, prop_7_body_0, action_left);
     body_7.add_instruction(inst_0_7);
 
     Plan plan_7(EventOperator::GOAL_ADDITION, prop_7, &context_7, &body_7);
     plan_base.add_plan(plan_7);
-
-    //--------------------------------------------------------------------------
-
-    Proposition prop_8(8);
-    context_8 = Context(1);
-    body_8 = Body(1);
-
-    Proposition prop_8_pos_4(5);
-    ContextCondition cond_8_0(prop_8_pos_4);
-    context_8.add_context(cond_8_0);
-
-    Proposition prop_8_body_0(14);
-    BodyInstruction inst_0_8(BodyType::ACTION, prop_8_body_0, action_left);
-    body_8.add_instruction(inst_0_8);
-
-    Plan plan_8(EventOperator::GOAL_ADDITION, prop_8, &context_8, &body_8);
-    plan_base.add_plan(plan_8);
   }
 
   BeliefBase * get_belief_base()
