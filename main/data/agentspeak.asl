@@ -1,12 +1,6 @@
-!init.
+!start.
 
-+!init <- !!clean.
++!start <-.my_name("Alice"); +happy.
++happy <- .broadcast(achieve,hello); !!hello.
++!hello <- say_hello; .send(bob,tell,happy).
 
-+!clean : clean <- !move; !!clean.
-+!clean : dirty <- suck;  !!clean.
--!clean         <- !!clean.
-
-+!move : pos_1 <- right.
-+!move : pos_2 <- down.
-+!move : pos_3 <- up.
-+!move : pos_4 <- left.
