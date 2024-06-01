@@ -1,15 +1,32 @@
+
 #include "functions.h"
+
+bool action_say_start()
+{
+  putchar('\n');
+  printf("Hey, I'm Alice and I'm running...\n\n");
+  return true;
+}
 
 bool action_say_hello()
 {
-    printf("Hello world!\n");
-    printf("I am an agent and I will keep running until I am terminated\n");
-    return true;
+  putchar('\n');
+  printf("Hello Everyone, I'm Alice!\n");
+  printf("[Question to Bob] Is it day or night now?\n");
+  return true;
 }
 
-bool update_hello()
+bool action_say_its_day()
 {
-    printf("Hello world!\n");
-    printf("I am an agent and I will keep running until I am terminated\n");
-    return true;
+  putchar('\n');
+  printf("Ohh, it's day, I'm going for a walk in the park!\n");
+  return true;
 }
+
+bool action_say_its_night()
+{
+  putchar('\n');
+  printf("Meh, it's night, I'm going to sleep...\n");
+  return true;
+}
+

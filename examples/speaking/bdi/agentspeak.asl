@@ -1,14 +1,13 @@
-!init.
+// Agent Alice.
 
-+!init <- !!clean; !!connect.
+!start.
+!is_day. 
+its_day. 
+its_night.
 
-+!clean : clean <- !move; !!clean.
-+!clean : dirty <- suck;  !!clean.
--!clean         <- !!clean.
++!start <- .my_name("alice"); say_start.
 
-+!connect : true <- connect_to_wifi.
++!hello <- say_hello .send(bob,achieve,is_day). //Ask Bob if it's day
 
-+!move : pos_1 <- right.
-+!move : pos_2 <- down.
-+!move : pos_3 <- up.
-+!move : pos_4 <- left.
++its_day <- say_its_day.
++its_night <- say_its_night.

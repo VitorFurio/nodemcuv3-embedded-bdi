@@ -47,6 +47,7 @@ uint8_t action_connect_to_wifi()
   return 1;
 }
 
+/* Outras funções de ação permanecem inalteradas */
 
 uint8_t action_right()
 {
@@ -148,3 +149,4 @@ uint8_t update_pos(uint8_t var)
   }
   return 1;
 }
+

@@ -4,9 +4,11 @@
 #include <stdio.h>
 #include <string.h>
 
+bool action_say_start();
 bool action_say_hello();
+bool action_say_its_day();
+bool action_say_its_night();
 
-bool update_hello();
 
 #endif /* FUNCTIONS_H_ */
 

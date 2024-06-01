@@ -5,13 +5,15 @@
  *      Author: Matuzalem Muller
  */
 
-#include "agent/agent.h"
+#include "agent/agent_comm.h"
 #include "config/configuration.h"
 
 #include <unistd.h>
 #include <stdio.h>
+#include "../data/functions.h"
 
 extern "C" {
+ 	#include "../data/wifi_station.h"
 	void app_main(void);
 }
 
@@ -25,9 +27,10 @@ void app_main()
   IntentionBase * intentions = agent_settings.get_intention_base();
   Communicator * communicator = agent_settings.get_communicator();
   
+  wifi_init_sta();
   communicator->initialize();
   
-  Agent agent(beliefs, events, plans, intentions, communicator);
+  AgentComm agent(beliefs, events, plans, intentions, communicator);
   
   
   while(true)
