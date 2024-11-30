@@ -1,0 +1,9 @@
+ESP8266:
+
++ Variável de ambiente do python esp8266: 
+source $IDF_PATH/export.sh
+
+compilar:
+make fire_sensors
+			
+

@@ -76,7 +76,9 @@ speaking-bdi:
 	./copy_examples.sh speaking-bdi
 	make agent-bdi
 
-
+fire_sensors:
+	./copy_examples.sh sensor
+	make agent-bdi
 
 program-sizes:
 	./copy_examples.sh v1-traditional

@@ -77,3 +77,19 @@ then
   cp examples/speaking/bdi/CMakeLists.txt main/
   cp examples/speaking/bdi/agent.config .
 fi
+
+if [[ "$1" == "sensor" ]];
+then
+  rm -rf main/data/*
+  rm -rf main/src/config/*
+  rm -rf main/src/agent*
+  rm -rf main/CMakeLists.txt
+  cp examples/fire_sensors/agentspeak.asl main/data/
+  cp examples/fire_sensors/functions.* main/data/
+  cp examples/fire_sensors/agent_loop.cpp main/src/
+  cp examples/fire_sensors/wifi_functions/wifi_station.* main/data/
+  cp examples/fire_sensors/CMakeLists.txt main/
+  cp examples/fire_sensors/agent.config .
+fi
+
+

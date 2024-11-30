@@ -5,11 +5,6 @@
 #define YELLOW_LED GPIO_NUM_12     // GPIO12 (LED amarelo) (D6)
 #define RED_LED GPIO_NUM_14        // GPIO14 (LED vermelho) (D5)
 
-//#define D1 GPIO_NUM_5
-//#define D2 GPIO_NUM_4
-//#define D3 GPIO_NUM_0
-//#define D4 GPIO_NUM_2
-
 bool fire = false;
 
 void setup()
