@@ -11,21 +11,22 @@
     
 
 // Reação ao ambiente e sociabilidade
-+fire : true <- print_fire; +alert; .broadcast(tell,sensor1).
++fire : true <- print_fire; .broadcast(tell,sensor1).
 -fire : true <- print_not_fire; .broadcast(untell,sensor1).
 
 // Reação a mensagens
++sensor1 <- +alert. 
 +sensor2 <- +alert.
 +sensor3 <- +alert.
 
 +alert <- print_alert; !!check_alarm_condition.
 
 // Se pelo menos 2 sensores dispararem, o alarme é acionado.
-+!check_alarm_condition: fire & sensor2 <- trigger_alarm; !!check_alarm_condition.
-+!check_alarm_condition: fire & sensor3 <- trigger_alarm; !!check_alarm_condition. 
++!check_alarm_condition: sensor1 & sensor2 <- trigger_alarm; !!check_alarm_condition.
++!check_alarm_condition: sensor1 & sensor3 <- trigger_alarm; !!check_alarm_condition. 
 
 // Mantém o estado de alerta.
-+!check_alarm_condition: fire <- +alert; !!check_alarm_condition. 
++!check_alarm_condition: sensor1 <- +alert; !!check_alarm_condition. 
 +!check_alarm_condition: sensor2 <- +alert !!check_alarm_condition. 
 +!check_alarm_condition: sensor3 <- +alert; !!check_alarm_condition. 
 

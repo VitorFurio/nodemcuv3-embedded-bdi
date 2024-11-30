@@ -14,21 +14,22 @@
  *     
  * 
  * // Reação ao ambiente e sociabilidade
- * +fire : true <- print_fire; +alert; .broadcast(tell,sensor1).
+ * +fire : true <- print_fire; .broadcast(tell,sensor1).
  * -fire : true <- print_not_fire; .broadcast(untell,sensor1).
  * 
  * // Reação a mensagens
+ * +sensor1 <- +alert. 
  * +sensor2 <- +alert.
  * +sensor3 <- +alert.
  * 
  * +alert <- print_alert; !!check_alarm_condition.
  * 
  * // Se pelo menos 2 sensores dispararem, o alarme é acionado.
- * +!check_alarm_condition: fire & sensor2 <- trigger_alarm; !!check_alarm_condition.
- * +!check_alarm_condition: fire & sensor3 <- trigger_alarm; !!check_alarm_condition. 
+ * +!check_alarm_condition: sensor1 & sensor2 <- trigger_alarm; !!check_alarm_condition.
+ * +!check_alarm_condition: sensor1 & sensor3 <- trigger_alarm; !!check_alarm_condition. 
  * 
  * // Mantém o estado de alerta.
- * +!check_alarm_condition: fire <- +alert; !!check_alarm_condition. 
+ * +!check_alarm_condition: sensor1 <- +alert; !!check_alarm_condition. 
  * +!check_alarm_condition: sensor2 <- +alert !!check_alarm_condition. 
  * +!check_alarm_condition: sensor3 <- +alert; !!check_alarm_condition. 
  * 
@@ -79,6 +80,8 @@ private:
   Context context_10;
   Body body_11;
   Context context_11;
+  Body body_12;
+  Context context_12;
   BeliefBase belief_base;
   EventBase event_base;
   PlanBase plan_base;
@@ -90,9 +93,9 @@ public:
   AgentSettings()
   {
     belief_base = BeliefBase(5);
-    event_base = EventBase(15);
-    plan_base = PlanBase(12);
-    intention_base = IntentionBase(5, 10);
+    event_base = EventBase(150);
+    plan_base = PlanBase(13);
+    intention_base = IntentionBase(50, 100);
 
 
     // Mapping propositions to enable communication between agents.
@@ -178,21 +181,17 @@ public:
 
     Proposition prop_1(1);
     context_1 = Context(0);
-    body_1 = Body(3);
+    body_1 = Body(2);
 
     Proposition prop_1_body_0(8);
     BodyInstruction inst_0_1(BodyType::ACTION, prop_1_body_0, action_print_fire);
     body_1.add_instruction(inst_0_1);
 
-    Proposition prop_1_body_1(0);
-    BodyInstruction inst_1_1(BodyType::BELIEF, prop_1_body_1, EventOperator::BELIEF_ADDITION);
+    Proposition prop_1_body_1(9);
+    BodyInstruction inst_1_1(BodyType::INTERNAL_ACTION, prop_1_body_1, communicator.internal_action_broadcast);
+    inst_1_1.add_arg(CENUMFOR_ILF::TELL);
+    inst_1_1.add_arg(list.searchByName("sensor1")->prop);
     body_1.add_instruction(inst_1_1);
-
-    Proposition prop_1_body_2(9);
-    BodyInstruction inst_2_1(BodyType::INTERNAL_ACTION, prop_1_body_2, communicator.internal_action_broadcast);
-    inst_2_1.add_arg(CENUMFOR_ILF::TELL);
-    inst_2_1.add_arg(list.searchByName("sensor1")->prop);
-    body_1.add_instruction(inst_2_1);
 
     Plan plan_1(EventOperator::BELIEF_ADDITION, prop_1, &context_1, &body_1);
     plan_base.add_plan(plan_1);
@@ -218,7 +217,7 @@ public:
 
     //--------------------------------------------------------------------------
 
-    Proposition prop_3(3);
+    Proposition prop_3(2);
     context_3 = Context(0);
     body_3 = Body(1);
 
@@ -231,7 +230,7 @@ public:
 
     //--------------------------------------------------------------------------
 
-    Proposition prop_4(4);
+    Proposition prop_4(3);
     context_4 = Context(0);
     body_4 = Body(1);
 
@@ -244,44 +243,32 @@ public:
 
     //--------------------------------------------------------------------------
 
-    Proposition prop_5(0);
+    Proposition prop_5(4);
     context_5 = Context(0);
-    body_5 = Body(2);
+    body_5 = Body(1);
 
-    Proposition prop_5_body_0(11);
-    BodyInstruction inst_0_5(BodyType::ACTION, prop_5_body_0, action_print_alert);
+    Proposition prop_5_body_0(0);
+    BodyInstruction inst_0_5(BodyType::BELIEF, prop_5_body_0, EventOperator::BELIEF_ADDITION);
     body_5.add_instruction(inst_0_5);
-
-    Proposition prop_5_body_1(12);
-    BodyInstruction inst_1_5(BodyType::GOAL, prop_5_body_1, EventOperator::GOAL_ACHIEVE);
-    body_5.add_instruction(inst_1_5);
 
     Plan plan_5(EventOperator::BELIEF_ADDITION, prop_5, &context_5, &body_5);
     plan_base.add_plan(plan_5);
 
     //--------------------------------------------------------------------------
 
-    Proposition prop_6(12);
-    context_6 = Context(2);
+    Proposition prop_6(0);
+    context_6 = Context(0);
     body_6 = Body(2);
 
-    Proposition prop_6_fire(1);
-    ContextCondition cond_6_0(prop_6_fire);
-    context_6.add_context(cond_6_0);
-
-    Proposition prop_6_sensor2(3);
-    ContextCondition cond_6_1(prop_6_sensor2);
-    context_6.add_context(cond_6_1);
-
-    Proposition prop_6_body_0(13);
-    BodyInstruction inst_0_6(BodyType::ACTION, prop_6_body_0, action_trigger_alarm);
+    Proposition prop_6_body_0(11);
+    BodyInstruction inst_0_6(BodyType::ACTION, prop_6_body_0, action_print_alert);
     body_6.add_instruction(inst_0_6);
 
     Proposition prop_6_body_1(12);
     BodyInstruction inst_1_6(BodyType::GOAL, prop_6_body_1, EventOperator::GOAL_ACHIEVE);
     body_6.add_instruction(inst_1_6);
 
-    Plan plan_6(EventOperator::GOAL_ADDITION, prop_6, &context_6, &body_6);
+    Plan plan_6(EventOperator::BELIEF_ADDITION, prop_6, &context_6, &body_6);
     plan_base.add_plan(plan_6);
 
     //--------------------------------------------------------------------------
@@ -290,12 +277,12 @@ public:
     context_7 = Context(2);
     body_7 = Body(2);
 
-    Proposition prop_7_fire(1);
-    ContextCondition cond_7_0(prop_7_fire);
+    Proposition prop_7_sensor1(2);
+    ContextCondition cond_7_0(prop_7_sensor1);
     context_7.add_context(cond_7_0);
 
-    Proposition prop_7_sensor3(4);
-    ContextCondition cond_7_1(prop_7_sensor3);
+    Proposition prop_7_sensor2(3);
+    ContextCondition cond_7_1(prop_7_sensor2);
     context_7.add_context(cond_7_1);
 
     Proposition prop_7_body_0(13);
@@ -312,15 +299,19 @@ public:
     //--------------------------------------------------------------------------
 
     Proposition prop_8(12);
-    context_8 = Context(1);
+    context_8 = Context(2);
     body_8 = Body(2);
 
-    Proposition prop_8_fire(1);
-    ContextCondition cond_8_0(prop_8_fire);
+    Proposition prop_8_sensor1(2);
+    ContextCondition cond_8_0(prop_8_sensor1);
     context_8.add_context(cond_8_0);
 
-    Proposition prop_8_body_0(0);
-    BodyInstruction inst_0_8(BodyType::BELIEF, prop_8_body_0, EventOperator::BELIEF_ADDITION);
+    Proposition prop_8_sensor3(4);
+    ContextCondition cond_8_1(prop_8_sensor3);
+    context_8.add_context(cond_8_1);
+
+    Proposition prop_8_body_0(13);
+    BodyInstruction inst_0_8(BodyType::ACTION, prop_8_body_0, action_trigger_alarm);
     body_8.add_instruction(inst_0_8);
 
     Proposition prop_8_body_1(12);
@@ -336,8 +327,8 @@ public:
     context_9 = Context(1);
     body_9 = Body(2);
 
-    Proposition prop_9_sensor2(3);
-    ContextCondition cond_9_0(prop_9_sensor2);
+    Proposition prop_9_sensor1(2);
+    ContextCondition cond_9_0(prop_9_sensor1);
     context_9.add_context(cond_9_0);
 
     Proposition prop_9_body_0(0);
@@ -357,8 +348,8 @@ public:
     context_10 = Context(1);
     body_10 = Body(2);
 
-    Proposition prop_10_sensor3(4);
-    ContextCondition cond_10_0(prop_10_sensor3);
+    Proposition prop_10_sensor2(3);
+    ContextCondition cond_10_0(prop_10_sensor2);
     context_10.add_context(cond_10_0);
 
     Proposition prop_10_body_0(0);
@@ -375,19 +366,40 @@ public:
     //--------------------------------------------------------------------------
 
     Proposition prop_11(12);
-    context_11 = Context(0);
+    context_11 = Context(1);
     body_11 = Body(2);
 
+    Proposition prop_11_sensor3(4);
+    ContextCondition cond_11_0(prop_11_sensor3);
+    context_11.add_context(cond_11_0);
+
     Proposition prop_11_body_0(0);
-    BodyInstruction inst_0_11(BodyType::BELIEF, prop_11_body_0, EventOperator::BELIEF_DELETION);
+    BodyInstruction inst_0_11(BodyType::BELIEF, prop_11_body_0, EventOperator::BELIEF_ADDITION);
     body_11.add_instruction(inst_0_11);
 
-    Proposition prop_11_body_1(14);
-    BodyInstruction inst_1_11(BodyType::ACTION, prop_11_body_1, action_print_default);
+    Proposition prop_11_body_1(12);
+    BodyInstruction inst_1_11(BodyType::GOAL, prop_11_body_1, EventOperator::GOAL_ACHIEVE);
     body_11.add_instruction(inst_1_11);
 
     Plan plan_11(EventOperator::GOAL_ADDITION, prop_11, &context_11, &body_11);
     plan_base.add_plan(plan_11);
+
+    //--------------------------------------------------------------------------
+
+    Proposition prop_12(12);
+    context_12 = Context(0);
+    body_12 = Body(2);
+
+    Proposition prop_12_body_0(0);
+    BodyInstruction inst_0_12(BodyType::BELIEF, prop_12_body_0, EventOperator::BELIEF_DELETION);
+    body_12.add_instruction(inst_0_12);
+
+    Proposition prop_12_body_1(14);
+    BodyInstruction inst_1_12(BodyType::ACTION, prop_12_body_1, action_print_default);
+    body_12.add_instruction(inst_1_12);
+
+    Plan plan_12(EventOperator::GOAL_ADDITION, prop_12, &context_12, &body_12);
+    plan_base.add_plan(plan_12);
   }
 
   BeliefBase * get_belief_base()

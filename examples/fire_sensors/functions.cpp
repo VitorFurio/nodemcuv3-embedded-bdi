@@ -4,22 +4,14 @@
 #include <sys/time.h>
 #include "esp_sntp.h"  // Biblioteca para NTP
 
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "driver/gpio.h"
-
 #define BUTTON_PIN GPIO_NUM_4    // Pino GPIO do ESP8266 conectado ao botão (D2)
 #define GREEN_LED GPIO_NUM_13      // GPIO13 (LED verde) (D7)
 #define YELLOW_LED GPIO_NUM_12     // GPIO12 (LED amarelo) (D6)
 #define RED_LED GPIO_NUM_14        // GPIO14 (LED vermelho) (D5)
 
-#define DEBOUNCE_TIME_MS 200  
-
 bool fire = false;
 bool print_alert = true;
 bool print_alarm = true;
-static uint32_t last_time = 0; 
-
 
 // Função para inicializar o NTP e sincronizar o horário
 void initialize_sntp()
@@ -58,7 +50,7 @@ void print_current_time()
         printf("Horário não sincronizado.\n");
         return;
     }
-    printf("Horário atual no Brasil: %02d:%02d:%02d\n",
+    printf(" - %02d:%02d:%02d\n",
            timeinfo.tm_hour, timeinfo.tm_min, timeinfo.tm_sec);
 }
 
@@ -80,7 +72,7 @@ void setup()
 
 bool action_print_init()
 {
-    printf("Sensor1 iniciado.\n");
+    printf("Sensor1 iniciado.");
     print_current_time();
     gpio_set_level(GREEN_LED, 1);   // Acende LED verde
     gpio_set_level(YELLOW_LED, 0);  // Apaga LED amarelo
@@ -93,7 +85,11 @@ bool action_print_init()
 
 bool action_trigger_alarm()
 {
-    printf("\n# ALERT! DANGEROUS CONDITION!!\n");
+    if(print_alarm){
+      printf("\n# ALERT! DANGEROUS CONDITION!!");
+      print_current_time();
+      print_alarm = false;
+    }
     gpio_set_level(GREEN_LED, 0);   // Apaga LED verde
     gpio_set_level(YELLOW_LED, 0);  // Apaga LED amarelo
     gpio_set_level(RED_LED, 1);     // Acende LED vermelho
@@ -103,9 +99,10 @@ bool action_trigger_alarm()
 bool action_print_alert()
 {
    if(print_alert){
-      printf("Sensor1 operando em modo alerta.");
+      printf("Sensor1 operando em modo alerta");
       print_current_time();
       print_alert = false;
+      print_alarm = true;
     }
     gpio_set_level(GREEN_LED, 0);   // Apaga LED verde
     gpio_set_level(YELLOW_LED, 1);  // Acende LED amarelo
@@ -116,9 +113,10 @@ bool action_print_alert()
 bool action_print_default()
 {
     if(!print_alert){
-      printf("Sensor1 operando em modo normal.");
+      printf("Sensor1 operando em modo normal");
       print_current_time();
       print_alert = true;
+      print_alarm = true;
     }
     gpio_set_level(GREEN_LED, 1);   // Acende LED verde
     gpio_set_level(YELLOW_LED, 0);  // Apaga LED amarelo
@@ -128,19 +126,21 @@ bool action_print_default()
 
 bool action_print_fire()
 {
-    printf("# Fogo detectado!.\n");
+    printf("# Fogo detectado!");
+    print_current_time(); 
     return true;
 }
 
 bool action_print_not_fire()
 {
-    printf("# Sem Fogo!.\n");
+    printf("# Sem Fogo!");
+    print_current_time(); 
     return true;
 }
 
 bool update_fire(bool var)
 {
-    fire = gpio_get_level(BUTTON_PIN);  // Lê o nível lógico do botão
+    fire = (bool)gpio_get_level(BUTTON_PIN);  // Lê o nível lógico do botão
     return fire;
 }
 
