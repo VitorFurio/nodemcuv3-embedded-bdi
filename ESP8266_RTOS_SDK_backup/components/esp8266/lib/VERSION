@@ -1,0 +1,8 @@
+gwen:
+    core:       5a78602
+    net80211:   5a78602
+    pp:         5a78602
+    espnow:     5a78602
+
+    smartconfig:  2.9.0
+    phy:          1163.0
